@@ -7,6 +7,10 @@
 	function handleClick(event){
 		elo = event.detail.text;
 	}
+
+	let data = {
+		"Wolf" : [ ["Lucas Rodrigues" , 540] , ["Sávio Vanini" , 500], ["Cássio Vanini" , 300] , ["Marco Antonio", 100] , ["Marco Antonio", 100] , ["Marco Antonio", 100] ,["Marco Antonio", 100] , ["Marco Antonio", 100] , ["Marco Antonio", 100] , ["Marco Antonio", 100] , ["Marco Antonio", 100] , ["Marco Antonio", 100]]
+	}
 	
 </script>
 
@@ -15,7 +19,7 @@
 	<Header on:message={handleClick}></Header>
 	<div class="main_body">
 		<SideMenu rank={elo}></SideMenu>
-		<ScoreTable></ScoreTable>
+		<ScoreTable rankData={ data[elo] }></ScoreTable>
 	</div>
 
 </body>
