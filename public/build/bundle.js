@@ -1017,7 +1017,7 @@ var app = (function () {
     	entry = new Entry({
     			props: {
     				entry: {
-    					"pos": /*i*/ ctx[3],
+    					"pos": /*i*/ ctx[3] + 1,
     					"name": /*rankData*/ ctx[0][/*i*/ ctx[3]][0],
     					"points": /*rankData*/ ctx[0][/*i*/ ctx[3]][1],
     					"style": /*i*/ ctx[3] % 2
@@ -1038,7 +1038,7 @@ var app = (function () {
     			const entry_changes = {};
 
     			if (dirty & /*rankData*/ 1) entry_changes.entry = {
-    				"pos": /*i*/ ctx[3],
+    				"pos": /*i*/ ctx[3] + 1,
     				"name": /*rankData*/ ctx[0][/*i*/ ctx[3]][0],
     				"points": /*rankData*/ ctx[0][/*i*/ ctx[3]][1],
     				"style": /*i*/ ctx[3] % 2

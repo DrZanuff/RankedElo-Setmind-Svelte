@@ -12,7 +12,7 @@
 
     {#each rankData as entry , i }
         <Entry entry={
-            { "pos" : i , "name" : rankData[i][0] , "points" : rankData[i][1] , "style" : i % 2 }
+            { "pos" : i+1 , "name" : rankData[i][0] , "points" : rankData[i][1] , "style" : i % 2 }
         }/>
     {/each}
 
