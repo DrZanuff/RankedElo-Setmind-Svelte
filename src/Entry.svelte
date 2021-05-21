@@ -8,19 +8,22 @@
     .entry{
         height: 24px;
         display: grid;
-        grid-template-columns: 1fr 4fr 1fr;
+        grid-template-columns: 0.5fr 4fr 0.5fr;
         max-height: 24px;
         align-content: flex-start;
         font-family: aldritch;
         margin-bottom: 32px;
-        margin-left: 64px;
+        margin-left: 8px;
         margin-right: 64px;
         z-index: 1;
-        
     }
 
     h1{
         font-size: 24px;
+    }
+
+    .entry_pos{
+        text-align: center; 
     }
 
     .entry_name{
@@ -28,18 +31,55 @@
     }
 
     .entry_points{
-        text-align: right;
+        text-align: center;
+    }
+
+    .primary{
+        color: white;
+    }
+
+    .secondary{
+        color: rgb(146, 146, 146);
+    }
+
+    .outer{
+        position: relative;
+    }
+
+    .inner{
+        position: absolute;
+        top: 10px;
+        margin-left: 60px;
+        margin-right: auto;
+        width: 100%;
+    }
+
+    img{
+        display: block;
+        width: 90%;
     }
 
 </style>
 
-<div class="entry">
-    <h1>{entry.pos}</h1>
-    <h1 class="entry_name">{entry.name}</h1>
-    <h1 class="entry_points">{entry.points}</h1>
-    <img class="bgImgLine" src="img/bg_line.png"/>
+<div class="entry outer">
+    <div >
+        <h1 class="entry_pos { (  entry.style == 0 ? "primary" : "secondary") }">{entry.pos}</h1>
+    </div>
+
+    <div>
+        <h1 class="entry_name {(  entry.style == 0 ? "primary" : "secondary")}">{entry.name}</h1>
+    </div>
+    
+    <div>
+        <h1 class="entry_points {(  entry.style == 0 ? "primary" : "secondary")}">{entry.points}</h1>
+    </div>
+
+    <div class="inner">
+        <img src="build/img/bg_line.png"/>
+    </div>
+    
 </div>
 
 <script>
-    export let entry = {"pos" : 0 , "name": "User Name" , "points" : "0000" };
+    export let entry = {"pos" : 0 , "name": "User Name" , "points" : "0000" , "style" : "primary" };
 </script>
