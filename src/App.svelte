@@ -20,7 +20,7 @@
 	}
 
 	onMount(async () => {
-		const response = await fetch(`https://script.google.com/macros/s/AKfycbzVnZSIdHoMa5o_tVr7fHLyWwk_afnka9WyqCQtqTAHo8h_OoOwz8cc3sd_mlDV6eBc/exec`);
+		const response = await fetch(`https://script.google.com/macros/s/AKfycbxhnpSr3ijJfYhWEuD9ZH-28KvW1KXx6hQHWVRmzi_UZDpumj2w7rTwgtYoTqQ6ZYjF/exec`);
 		data = await response.json();
 		loadImages();
 	});
