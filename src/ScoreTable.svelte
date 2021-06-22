@@ -1,7 +1,8 @@
 <script>
     import Entry from "./Entry.svelte";
     import EntryHeader from "./EntryHeader.svelte";
-    export let rankData = []
+    export let rankData = [];
+    let nameEntry;
 </script>
 
 <div class="score_table">
@@ -10,9 +11,15 @@
     <EntryHeader></EntryHeader>
     <img class="line down" src="build/img/horizontal_line.png" alt="">
 
-    {#each rankData as entry , i }
+    {#each rankData as entry , i }   
         <Entry entry={
-            { "pos" : i+1 , "name" : rankData[i][0] , "points" : rankData[i][1] , "style" : i % 2 }
+            {
+                "pos" : i+1 ,
+                "name" : rankData[i][0] ,
+                "points" : rankData[i][1] ,
+                "style" : i % 2 ,
+                "color" : rankData[i][2]
+            }
         }/>
     {/each}
 
