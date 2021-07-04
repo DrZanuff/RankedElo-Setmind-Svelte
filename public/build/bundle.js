@@ -608,8 +608,66 @@ var app = (function () {
 
     const file$4 = "src/SideMenu.svelte";
 
+    // (34:8) {#if settings.isOnSeason}
+    function create_if_block$2(ctx) {
+    	let div;
+    	let img0;
+    	let img0_src_value;
+    	let t0;
+    	let p;
+    	let t2;
+    	let img1;
+    	let img1_src_value;
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			img0 = element("img");
+    			t0 = space();
+    			p = element("p");
+    			p.textContent = "DESAFIO DOS TRIOS";
+    			t2 = space();
+    			img1 = element("img");
+    			attr_dev(img0, "class", "h-line up svelte-fk8kmg");
+    			if (img0.src !== (img0_src_value = "build/img/horizontal_line.png")) attr_dev(img0, "src", img0_src_value);
+    			attr_dev(img0, "alt", "");
+    			add_location(img0, file$4, 35, 12, 1298);
+    			attr_dev(p, "class", "title-trio svelte-fk8kmg");
+    			add_location(p, file$4, 36, 12, 1377);
+    			attr_dev(img1, "class", "h-line down svelte-fk8kmg");
+    			if (img1.src !== (img1_src_value = "build/img/horizontal_line.png")) attr_dev(img1, "src", img1_src_value);
+    			attr_dev(img1, "alt", "");
+    			add_location(img1, file$4, 37, 12, 1433);
+    			attr_dev(div, "class", "teams-table svelte-fk8kmg");
+    			add_location(div, file$4, 34, 8, 1260);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, img0);
+    			append_dev(div, t0);
+    			append_dev(div, p);
+    			append_dev(div, t2);
+    			append_dev(div, img1);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$2.name,
+    		type: "if",
+    		source: "(34:8) {#if settings.isOnSeason}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
     function create_fragment$4(ctx) {
-    	let div2;
+    	let div3;
+    	let div1;
     	let div0;
     	let img0;
     	let img0_src_value;
@@ -617,51 +675,62 @@ var app = (function () {
     	let img1;
     	let img1_src_value;
     	let t1;
-    	let div1;
+    	let t2;
+    	let div2;
     	let img2;
     	let img2_src_value;
+    	let if_block = /*settings*/ ctx[1].isOnSeason && create_if_block$2(ctx);
 
     	const block = {
     		c: function create() {
-    			div2 = element("div");
+    			div3 = element("div");
+    			div1 = element("div");
     			div0 = element("div");
     			img0 = element("img");
     			t0 = space();
     			img1 = element("img");
     			t1 = space();
-    			div1 = element("div");
+    			if (if_block) if_block.c();
+    			t2 = space();
+    			div2 = element("div");
     			img2 = element("img");
-    			attr_dev(img0, "class", "bdg svelte-14ovvrk");
+    			attr_dev(img0, "class", "bdg svelte-fk8kmg");
     			if (img0.src !== (img0_src_value = "build/img/badges/" + /*rank*/ ctx[0] + ".png")) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "alt", "");
-    			add_location(img0, file$4, 6, 8, 110);
-    			attr_dev(img1, "class", "title svelte-14ovvrk");
+    			add_location(img0, file$4, 28, 12, 1069);
+    			attr_dev(img1, "class", "title svelte-fk8kmg");
     			if (img1.src !== (img1_src_value = "build/img/titles/" + /*rank*/ ctx[0] + ".png")) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "alt", "");
-    			add_location(img1, file$4, 7, 8, 177);
-    			attr_dev(div0, "class", "image_elo svelte-14ovvrk");
-    			add_location(div0, file$4, 5, 4, 78);
-    			attr_dev(img2, "class", "line svelte-14ovvrk");
+    			add_location(img1, file$4, 29, 12, 1140);
+    			attr_dev(div0, "class", "image_elo svelte-fk8kmg");
+    			add_location(div0, file$4, 27, 8, 1033);
+    			attr_dev(div1, "class", "side_menu svelte-fk8kmg");
+    			attr_dev(div1, "style", "--side-width : " + /*config*/ ctx[2].sideMenuSize + ";\n    --side-bdg : " + /*config*/ ctx[2].sideMenuBdgSize + ";\n    --side-dir : " + /*config*/ ctx[2].sideMenuFlexDir + ";\n    --side-title : " + /*config*/ ctx[2].sideMenuTitleSize + ";\n    --side-align : " + /*config*/ ctx[2].sideMenuFlexAlign + ";\n    --side-top-margin : " + /*config*/ ctx[2].sideMenuImgMarginTop + ";\n    --side-img-pct-h : " + /*config*/ ctx[2].sideMenuImgPctHeight + ";");
+    			add_location(div1, file$4, 18, 4, 656);
+    			attr_dev(img2, "class", "line svelte-fk8kmg");
     			if (img2.src !== (img2_src_value = "build/img/vertical_line.png")) attr_dev(img2, "src", img2_src_value);
     			attr_dev(img2, "alt", "");
-    			add_location(img2, file$4, 10, 8, 284);
-    			attr_dev(div1, "class", "div_line svelte-14ovvrk");
-    			add_location(div1, file$4, 9, 4, 253);
-    			attr_dev(div2, "class", "side_menu svelte-14ovvrk");
-    			add_location(div2, file$4, 4, 0, 50);
+    			add_location(img2, file$4, 43, 8, 1578);
+    			attr_dev(div2, "class", "div_line svelte-fk8kmg");
+    			add_location(div2, file$4, 42, 4, 1547);
+    			attr_dev(div3, "class", "main-body svelte-fk8kmg");
+    			add_location(div3, file$4, 17, 0, 628);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div2, anchor);
-    			append_dev(div2, div0);
+    			insert_dev(target, div3, anchor);
+    			append_dev(div3, div1);
+    			append_dev(div1, div0);
     			append_dev(div0, img0);
     			append_dev(div0, t0);
     			append_dev(div0, img1);
-    			append_dev(div2, t1);
-    			append_dev(div2, div1);
-    			append_dev(div1, img2);
+    			append_dev(div1, t1);
+    			if (if_block) if_block.m(div1, null);
+    			append_dev(div3, t2);
+    			append_dev(div3, div2);
+    			append_dev(div2, img2);
     		},
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*rank*/ 1 && img0.src !== (img0_src_value = "build/img/badges/" + /*rank*/ ctx[0] + ".png")) {
@@ -671,11 +740,23 @@ var app = (function () {
     			if (dirty & /*rank*/ 1 && img1.src !== (img1_src_value = "build/img/titles/" + /*rank*/ ctx[0] + ".png")) {
     				attr_dev(img1, "src", img1_src_value);
     			}
+
+    			if (/*settings*/ ctx[1].isOnSeason) {
+    				if (if_block) ; else {
+    					if_block = create_if_block$2(ctx);
+    					if_block.c();
+    					if_block.m(div1, null);
+    				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
+    			}
     		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div2);
+    			if (detaching) detach_dev(div3);
+    			if (if_block) if_block.d();
     		}
     	};
 
@@ -694,7 +775,19 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("SideMenu", slots, []);
     	let { rank = "Wolf" } = $$props;
-    	const writable_props = ["rank"];
+    	let { settings = { isOnSeason: false } } = $$props;
+
+    	let config = {
+    		sideMenuSize: settings.isOnSeason ? "388px" : "358px",
+    		sideMenuBdgSize: settings.isOnSeason ? "140px" : "240px",
+    		sideMenuTitleSize: settings.isOnSeason ? "81px" : "111px",
+    		sideMenuFlexDir: settings.isOnSeason ? "row" : "column",
+    		sideMenuFlexAlign: settings.isOnSeason ? "flex-start" : "center",
+    		sideMenuImgMarginTop: settings.isOnSeason ? "28px" : "0px",
+    		sideMenuImgPctHeight: settings.isOnSeason ? "25%" : "100%"
+    	};
+
+    	const writable_props = ["rank", "settings"];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<SideMenu> was created with unknown prop '${key}'`);
@@ -702,25 +795,28 @@ var app = (function () {
 
     	$$self.$$set = $$props => {
     		if ("rank" in $$props) $$invalidate(0, rank = $$props.rank);
+    		if ("settings" in $$props) $$invalidate(1, settings = $$props.settings);
     	};
 
-    	$$self.$capture_state = () => ({ rank });
+    	$$self.$capture_state = () => ({ rank, settings, config });
 
     	$$self.$inject_state = $$props => {
     		if ("rank" in $$props) $$invalidate(0, rank = $$props.rank);
+    		if ("settings" in $$props) $$invalidate(1, settings = $$props.settings);
+    		if ("config" in $$props) $$invalidate(2, config = $$props.config);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [rank];
+    	return [rank, settings, config];
     }
 
     class SideMenu extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$4, create_fragment$4, safe_not_equal, { rank: 0 });
+    		init(this, options, instance$4, create_fragment$4, safe_not_equal, { rank: 0, settings: 1 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -735,6 +831,14 @@ var app = (function () {
     	}
 
     	set rank(value) {
+    		throw new Error("<SideMenu>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get settings() {
+    		throw new Error("<SideMenu>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set settings(value) {
     		throw new Error("<SideMenu>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -1507,9 +1611,9 @@ var app = (function () {
     			create_component(sidemenu.$$.fragment);
     			t1 = space();
     			create_component(scoretable.$$.fragment);
-    			attr_dev(div, "class", "main_body svelte-bqdt0v");
+    			attr_dev(div, "class", "main_body svelte-1j0k58e");
     			add_location(div, file, 55, 3, 1531);
-    			attr_dev(body, "class", body_class_value = "" + (null_to_empty(/*elo*/ ctx[0]) + " svelte-bqdt0v"));
+    			attr_dev(body, "class", body_class_value = "" + (null_to_empty(/*elo*/ ctx[0]) + " svelte-1j0k58e"));
     			add_location(body, file, 51, 1, 1461);
     		},
     		m: function mount(target, anchor) {
@@ -1530,7 +1634,7 @@ var app = (function () {
     			if (dirty & /*data, elo*/ 5) scoretable_changes.rankData = /*data*/ ctx[2][/*elo*/ ctx[0]];
     			scoretable.$set(scoretable_changes);
 
-    			if (!current || dirty & /*elo*/ 1 && body_class_value !== (body_class_value = "" + (null_to_empty(/*elo*/ ctx[0]) + " svelte-bqdt0v"))) {
+    			if (!current || dirty & /*elo*/ 1 && body_class_value !== (body_class_value = "" + (null_to_empty(/*elo*/ ctx[0]) + " svelte-1j0k58e"))) {
     				attr_dev(body, "class", body_class_value);
     			}
     		},

@@ -77,6 +77,8 @@
 		background-color: black;
 		background-size: 100%;
   		background-attachment: fixed;
+ 		overflow: hidden;
+
 	}
 
 	.Wolf{
