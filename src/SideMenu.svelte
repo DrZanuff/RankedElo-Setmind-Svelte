@@ -1,4 +1,5 @@
 <script>
+    import Team from './Team.svelte';
     export let rank = "Wolf";
     export let settings = {
         isOnSeason : false
@@ -13,6 +14,7 @@
         sideMenuImgMarginTop : settings.isOnSeason ? '28px' : '0px',
         sideMenuImgPctHeight : settings.isOnSeason ? '25%' : '100%',
     }
+
 </script>
 
 <div class="main-body">
@@ -32,10 +34,16 @@
         </div>
 
         {#if settings.isOnSeason}
-        <div class="teams-table">
+        <div class="teams-title">
             <img class="h-line up" src="build/img/horizontal_line.png" alt="">
             <p class="title-trio">DESAFIO DOS TRIOS</p>
             <img class="h-line down" src="build/img/horizontal_line.png" alt="">
+        </div>
+        <div class="teams-list">
+            <span></span>
+            <Team></Team>
+            <Team></Team>
+            <Team></Team>
         </div>
         {/if}
     </div>
@@ -43,6 +51,7 @@
     <div class="div_line">
         <img class="line" src="build/img/vertical_line.png" alt="">
     </div>
+
 
 </div>
 
@@ -79,12 +88,23 @@
         margin-top: var(--side-top-margin);
     }
 
-    .teams-table{
-        min-height: 375px;
-        overflow: hidden;
+    .teams-title{
         margin-right: 32px;
         margin-left: 32px;
+    }
 
+    .teams-list{
+        margin-right: 32px;
+        margin-left: 32px;
+        min-height: 375px;
+        overflow: scroll;
+        -ms-overflow-style: none; 
+        scrollbar-width: none; 
+        overflow-y: scroll; 
+
+    }
+    .teams-list::-webkit-scrollbar{
+        display: none;
     }
 
     .title-trio{
@@ -93,10 +113,15 @@
         color : #FFF;
         display: flex;
         justify-content: center;
-        margin-bottom: 6px;
+        margin-bottom: 16px;
         margin-top: 6px;
     }
 
+
+    span{
+        height: 32px;
+        min-height: 32px;
+    }
     .div_line{
         height: 100%;
         display: flex;
@@ -116,12 +141,9 @@
         margin-bottom: 8px;
     }
 
-/*     .h-line.up{
-        margin-top: 32px; 
-    } */
     
     .h-line.down{
-        margin-bottom: 32px;
+        margin-bottom: 8px;
     }
 
 </style>
