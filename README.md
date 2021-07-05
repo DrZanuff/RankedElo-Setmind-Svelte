@@ -10,6 +10,7 @@ https://docs.google.com/spreadsheets/d/1K8O9bve_4IHo94muNLkV42fLLaLL7oUm-okoebHI
 * Svelte
 * Google Sheets
 * Google AppScript
+* Netlify Continuous Deployment
 
 ## Pictures
 
