@@ -1,18 +1,43 @@
 <script>
+import { each } from 'svelte/internal';
+
     import Team from './Team.svelte';
     export let rank = "Wolf";
     export let settings = {
-        isOnSeason : false
+        isOnSeason : true,
+        TrioChallengeActive : true,
+        ShowData : false,
+        Teams : []
     };
 
     let config = {
-        sideMenuSize      : settings.isOnSeason ? '388px' : '358px',
-        sideMenuBdgSize   : settings.isOnSeason ? '140px' : '240px',
-        sideMenuTitleSize : settings.isOnSeason ? '81px'  : '111px',
-        sideMenuFlexDir   : settings.isOnSeason ? 'row'   : 'column',
-        sideMenuFlexAlign : settings.isOnSeason ? 'flex-start' : 'center',
-        sideMenuImgMarginTop : settings.isOnSeason ? '28px' : '0px',
-        sideMenuImgPctHeight : settings.isOnSeason ? '25%' : '100%',
+        sideMenuSize      : returnShowStatus() ? '388px' : '358px',
+        sideMenuBdgSize   : returnShowStatus() ? '140px' : '240px',
+        sideMenuTitleSize : returnShowStatus() ? '81px'  : '111px',
+        sideMenuFlexDir   : returnShowStatus() ? 'row'   : 'column',
+        sideMenuFlexAlign : returnShowStatus() ? 'flex-start' : 'center',
+        sideMenuImgMarginTop : returnShowStatus() ? '28px' : '0px',
+        sideMenuImgPctHeight : returnShowStatus() ? '25%' : '100%',
+    }
+
+    function returnShowStatus(){
+        if (!settings.TrioChallengeActive){
+            return false;
+        }
+        if (settings.isOnSeason && settings.ShowData){
+            return true;
+        }
+        if (settings.isOnSeason && !settings.ShowData){
+            return false;
+        }
+        if (!settings.isOnSeason && settings.ShowData){
+            return true;
+        }
+        if (!settings.isOnSeason && !settings.ShowData){
+            return false;
+        }
+
+        return false;
     }
 
 </script>
@@ -32,20 +57,38 @@
             <img class="title" src="build/img/titles/{rank}.png" alt="">
 
         </div>
-
-        {#if settings.isOnSeason}
-        <div class="teams-title">
-            <img class="h-line up" src="build/img/horizontal_line.png" alt="">
-            <p class="title-trio">DESAFIO DOS TRIOS</p>
-            <img class="h-line down" src="build/img/horizontal_line.png" alt="">
-        </div>
-        <div class="teams-list">
-            <span></span>
-            <Team></Team>
-            <Team></Team>
-            <Team></Team>
-        </div>
+        {#if settings.ShowData}
+            {#if settings.isOnSeason}
+                <div class="teams-title">
+                    <img class="h-line up" src="build/img/horizontal_line.png" alt="">
+                    <p class="title-trio">DESAFIO DOS TRIOS</p>
+                    <img class="h-line down" src="build/img/horizontal_line.png" alt="">
+                </div>
+                <div class="teams-list">
+                    {#each settings.Teams as team , i }
+                        <Team teamData={team} pos={i+1}></Team>
+                    {/each}
+                </div>
+            {:else if settings.TrioChallengeActive}
+                <div class="teams-title">
+                    <img class="h-line up" src="build/img/horizontal_line.png" alt="">
+                    <p class="title-trio">VENCEDORES DA ÚLTIMA TEMPORADA</p>
+                    <img class="h-line down" src="build/img/horizontal_line.png" alt="">
+                </div>
+                <div class="teams-list">
+                    <!-- <Team teamData={settings.Teams[0]} pos={-1}></Team> -->
+                    {#each  settings.Teams[0].Members as menber , i}
+                        <Team teamData={{
+                            'TeamName' : settings.Teams[0].Members[i],
+                            'logoURL'  : settings.Teams[0].logoURL,
+                            'Points'   : -1
+                        }
+                        } pos={-1}></Team>
+                    {/each}
+                </div>
+            {/if}
         {/if}
+
     </div>
 
     <div class="div_line">
@@ -76,6 +119,7 @@
         justify-content: center;
         align-items: var(--side-align);
         margin-top: var(--side-top-margin);
+        object-fit: contain;
     }
 
     .bdg{
@@ -94,6 +138,7 @@
     }
 
     .teams-list{
+        margin-top: 12px;
         margin-right: 32px;
         margin-left: 32px;
         min-height: 375px;
@@ -113,8 +158,9 @@
         color : #FFF;
         display: flex;
         justify-content: center;
-        margin-bottom: 16px;
+        margin-bottom: 0px;
         margin-top: 6px;
+        text-align: center;
     }
 
 

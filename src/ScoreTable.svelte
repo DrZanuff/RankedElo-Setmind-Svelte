@@ -3,6 +3,23 @@
     import EntryHeader from "./EntryHeader.svelte";
     export let rankData = [];
     let nameEntry;
+    export let teams = [
+        { 'Members' : [] }
+    ];
+
+    function checkUserTeam(name){
+        for (var i=0; i<teams.length; i++){
+/*             if ( teams[i].Members === undefined){
+                console.log(teams)
+                return teams;
+            } */
+            if ( teams[i].Members.includes(name) ){
+                console.log("Found!")
+                return teams[i].logoURL;
+            }
+        }
+        return false;
+    }
 </script>
 
 <div class="score_table">
@@ -18,7 +35,7 @@
                 "name" : rankData[i][0] ,
                 "points" : rankData[i][1] ,
                 "style" : i % 2 ,
-                "color" : rankData[i][2]
+                "badge" : checkUserTeam( rankData[i][0] ) != false ? checkUserTeam( rankData[i][0] ) : false
             }
         }/>
     {/each}

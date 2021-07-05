@@ -12,7 +12,7 @@
         max-height: 24px;
         align-content: flex-start;
         font-family: aldritch;
-        margin-bottom: 32px;
+        margin-bottom: 38px;
         margin-left: 8px;
         margin-right: 64px;
         z-index: 1;
@@ -54,47 +54,51 @@
         width: 100%;
     }
 
-    img{
+    .line-img{
         display: block;
         width: 90%;
     }
 
+    .logo{
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+        margin-top: -12px;
+    }
+
+    .user-name{
+        display: flex;
+        justify-content: center;
+    }
+
+
+
 </style>
 
 <div class="entry outer">
-    {#if entry.color != ""}
-        <div >
-            <h1 class="entry_pos" style="color: {entry.color};">{entry.pos}</h1>
-        </div>
+    <div >
+        <h1 class="entry_pos { (  entry.style == 0 ? "primary" : "secondary") }">{entry.pos}</h1>
+    </div>
 
-        <div>
-            <h1 class="entry_name" style="color: {entry.color}">{entry.name}</h1>
-        </div>
-        
-        <div>
-            <h1 class="entry_points" style="color: {entry.color}">{entry.points}</h1>
-        </div>
+    <div class="user-name">
+        {#if entry.badge != false}
+            <img src={entry.badge} class="logo"> 
+        {/if}
 
-        <div class="inner">
-            <img src="build/img/bg_line.png"/>
-        </div>
-    {:else}
-        <div >
-            <h1 class="entry_pos { (  entry.style == 0 ? "primary" : "secondary") }">{entry.pos}</h1>
-        </div>
+        <h1 class="entry_name {(  entry.style == 0 ? "primary" : "secondary")}">{entry.name}</h1>
 
-        <div>
-            <h1 class="entry_name {(  entry.style == 0 ? "primary" : "secondary")}">{entry.name}</h1>
-        </div>
-        
-        <div>
-            <h1 class="entry_points {(  entry.style == 0 ? "primary" : "secondary")}">{entry.points}</h1>
-        </div>
+        {#if entry.badge != false}
+            <img src={entry.badge} class="logo"> 
+        {/if}
+    </div>
+    
+    <div>
+        <h1 class="entry_points {(  entry.style == 0 ? "primary" : "secondary")}">{entry.points}</h1>
+    </div>
 
-        <div class="inner">
-            <img src="build/img/bg_line.png"/>
-        </div>
-    {/if}
+    <div class="inner">
+        <img class="line-img" src="build/img/bg_line.png"/>
+    </div>
     
 </div>
 
@@ -104,6 +108,6 @@
         "name": "User Name" ,
         "points" : "0000" ,
         "style" : "primary" ,
-        "color" : ""
+        "badge" : false,
         };
 </script>

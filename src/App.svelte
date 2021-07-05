@@ -21,7 +21,8 @@
 
 	onMount(async () => {
 		//const response = await fetch(`https://script.google.com/macros/s/AKfycbxhnpSr3ijJfYhWEuD9ZH-28KvW1KXx6hQHWVRmzi_UZDpumj2w7rTwgtYoTqQ6ZYjF/exec`);
-		const response = await fetch(`https://script.google.com/macros/s/AKfycbxds7Bb7flTZ81eB5hJyu1-jxKZwKO7Hy1LTJy4xur6SF_RyST4mA2uUMSh0fw9zyOI/exec`);
+		//const response = await fetch(`https://script.google.com/macros/s/AKfycbxds7Bb7flTZ81eB5hJyu1-jxKZwKO7Hy1LTJy4xur6SF_RyST4mA2uUMSh0fw9zyOI/exec`);
+		const response = await fetch(`https://script.google.com/macros/s/AKfycbxzLvmZgUe8VzM-wP8ST1XMUBXaG0IJJmJ1yVHvWMDmM1qdJIgClJr02bS2u47yP35v/exec`);
 		data = await response.json();
 		loadImages();
 	});
@@ -39,7 +40,6 @@
 		for (var i=0;i<elements.length;i++){
 			var img = new Image();
    			img.src=elements[i];
-			console.log(img)
 		}
 
 		isLoaded = true;
@@ -54,8 +54,15 @@
 
 			<Header on:message={handleClick}></Header>
 			<div class="main_body">
-				<SideMenu rank={elo}></SideMenu>
-				<ScoreTable rankData={ data[elo] }></ScoreTable>
+				<SideMenu rank={elo} settings={data.Settings}></SideMenu>
+				{#if data.Settings.ShowData }
+					<ScoreTable rankData={ data[elo] } teams={data.Settings.Teams}></ScoreTable>
+				{:else}
+					<strong>Fim de Temporada!</strong>
+				{/if}
+
+
+				
 			</div>
 
 
@@ -67,6 +74,16 @@
 {/if}
 
 <style>
+	strong{
+		font-family: aldritch;
+        color: #FFF;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+        font-size: 5vw;
+	}
+
 	.main_body{
 		height:calc(100% - 54px);
 		display: flex;
